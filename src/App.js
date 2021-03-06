@@ -18,7 +18,7 @@ class App extends Component {
         <ResponsiveDrawer>
             <Switch>
               <Route path="/projects" component={Projects} />
-              <Route path="/orders" component={Contact} />
+              <Route path="/contact" component={Contact} />
               <Route path="/Posts" component={Posts} />
               <Route path="/" exact component={Home} />
 
