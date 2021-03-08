@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 class HidingLogic extends Component {
     render() {
         return (
@@ -8,5 +8,6 @@ class HidingLogic extends Component {
         )
     }
 }
+    
 
-export default HidingLogic
+export default HidingLogic;

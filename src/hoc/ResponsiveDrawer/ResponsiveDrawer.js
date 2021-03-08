@@ -5,22 +5,25 @@ import Divider from '@material-ui/core/Divider';
 import Drawer from '@material-ui/core/Drawer';
 import Hidden from '@material-ui/core/Hidden';
 import IconButton from '@material-ui/core/IconButton';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
+//Icons
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import MailIcon from '@material-ui/icons/Mail';
 import MenuIcon from '@material-ui/icons/Menu';
+import HomeIcon from '@material-ui/icons/Home';
+import AccountTreeIcon from '@material-ui/icons/AccountTree';
+import AllInboxIcon from '@material-ui/icons/AllInbox';
+import ContactMailIcon from '@material-ui/icons/ContactMail';
+import DirectionsCarIcon from '@material-ui/icons/DirectionsCar';
+//end icons
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import HidingLogic from '../HidingLogic/HidingLogic'
-//added icon components
-import HomeIcon from '@material-ui/icons/Home';
-import AccountTreeIcon from '@material-ui/icons/AccountTree';
-import AllInboxIcon from '@material-ui/icons/AllInbox';
-import ContactMailIcon from '@material-ui/icons/ContactMail'
+import {NavLink} from 'react-router-dom';
+
+
 
 const drawerWidth = 240;
 
@@ -58,26 +61,26 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const links = [
-  {
-    to: '/',
-    name: 'Home',
-    icon: HomeIcon
-  },
-  {
-    to: '/projects',
-    name: 'Projects',
-    icon: AccountTreeIcon
-  },
-  {
-    to: '/posts',
-    name: 'Posts',
-    icon: AllInboxIcon
-  },
-  {
-    to: '/contact',
-    name: 'Contact',
-    icon: ContactMailIcon
-  }
+    {
+        to: '/',
+        name: 'Home',
+        icon: HomeIcon
+    },
+    {
+        to: '/projects',
+        name: 'Projects',
+        icon: AccountTreeIcon
+    },
+    {
+        to: '/posts',
+        name: 'Posts',
+        icon: AllInboxIcon
+    },
+    {
+        to: '/contact',
+        name: 'Contact Us',
+        icon: ContactMailIcon
+    }
 ]
 
 function ResponsiveDrawer(props) {
@@ -89,31 +92,29 @@ function ResponsiveDrawer(props) {
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
-
   var Ico = ""
+  console.log(links);
+
   const drawer = (
     <div>
       <div className={classes.toolbar} />
       <Divider />
       <List>
-        {links.map((link, index) => (
-          
-          <ListItem button key={index} component="a" href={link.to}>
-            <HidingLogic>{Ico = link.icon}</HidingLogic>
-            <ListItemIcon><Ico /></ListItemIcon>
-            <ListItemText primary={link.name} />
-          </ListItem>
-        ))}
+          {links.map((link, index) =>(
+            <ListItem button key={index} component={NavLink} to={link.to} activeClassName="Mui-selected" exact>
+                <HidingLogic>{Ico = link.icon}</HidingLogic>
+                {console.log("Ico: " + Ico)}
+                <ListItemIcon><Ico /></ListItemIcon>
+                <ListItemText primary={link.name} />
+            </ListItem>           
+          ))}
       </List>
       <Divider />
-      <List>
-        {['All mail', 'Trash', 'Spam'].map((text, index) => (
-          <ListItem button key={text}>
-            <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-            <ListItemText primary={text} />
-          </ListItem>
-        ))}
-      </List>
+      {/* trying to open in a new tab - rel="noopener noreferrer" is to solve security risk of _blank*/}
+      <ListItem button component="a" href = "http://www.cadillac.com" target = "_blank" rel = "noopener noreferrer" activeClassName="Mui-selected" exact>
+          <ListItemIcon><DirectionsCarIcon /></ListItemIcon>
+          <ListItemText primary="Cadillac" />
+      </ListItem>   
     </div>
   );
 
@@ -134,9 +135,10 @@ function ResponsiveDrawer(props) {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" noWrap>
-            Responsive drawer
+            Hello World
           </Typography>
         </Toolbar>
+        
       </AppBar>
       <nav className={classes.drawer} aria-label="mailbox folders">
         {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
@@ -170,12 +172,12 @@ function ResponsiveDrawer(props) {
         </Hidden>
       </nav>
       <main className={classes.content}>
-        <div className={classes.toolbar} />
-        {props.children}
-        
+        <div className={classes.toolbar} /> 
+          {props.children}
       </main>
     </div>
   );
 }
+
 
 export default ResponsiveDrawer;
