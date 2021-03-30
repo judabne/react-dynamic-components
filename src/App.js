@@ -24,6 +24,7 @@ class App extends Component {
               <Route path="/projects" component={PageShell(Projects, Slide, "left")} />
               <Route path="/contact" component={PageShell(Contact, Zoom)} />
               <Route path="/Posts" component={PageShell(Posts, Grow)} />
+              <Route path="/AddPost" component={PageShell(AddPost, Slide, 'left')} />
               <Route path="/" exact component={PageShell(Home, Slide, "right")} />
             </Switch>
           
