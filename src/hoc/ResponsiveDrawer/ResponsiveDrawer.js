@@ -16,6 +16,7 @@ import AccountTreeIcon from '@material-ui/icons/AccountTree';
 import AllInboxIcon from '@material-ui/icons/AllInbox';
 import ContactMailIcon from '@material-ui/icons/ContactMail';
 import DirectionsCarIcon from '@material-ui/icons/DirectionsCar';
+import CreateIcon from '@material-ui/icons/Create';
 //end icons
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
@@ -70,6 +71,11 @@ const links = [
         to: '/projects',
         name: 'Projects',
         icon: AccountTreeIcon
+    },
+    {
+      to: '/addpost',
+      name: 'Add Post',
+      icon: CreateIcon
     },
     {
         to: '/posts',

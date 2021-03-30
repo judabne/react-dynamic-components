@@ -4,7 +4,7 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import Emoji from '../../components/Emoji/Emoji'
 import SendIcon from '@material-ui/icons/Send';
-import axios from '../../axios-messages';
+import axios from '../../axios-firebase';
 import CircularProgress from '@material-ui/core/CircularProgress';
 
 class Contact extends Component {

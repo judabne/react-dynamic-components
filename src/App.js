@@ -6,6 +6,7 @@ import Home from './containers/Home/Home'
 import Contact from './containers/Contact/Contact'
 import Projects from './containers/Projects/Projects'
 import Posts from './containers/Posts/Posts'
+import AddPost from './containers/AddPost/AddPost'
 import { Route, Switch } from 'react-router-dom';
 import PageShell from './hoc/PageShell/PageShell'
 //transition components
